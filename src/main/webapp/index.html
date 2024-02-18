@@ -5,28 +5,33 @@
     <title>Title</title>
 </head>
 <body>
-<input type="text" id="inputBox" placeholder="Sök...">
-<div id="test">
-    <button onclick="fetchData()">Lägg till Paragraf</button>
-</div>
+<input type="text" id="queryTerm" placeholder="Sök...">
+<button onclick="fetchData()">Sök</button>
+
 <div id="result"></div>
+
 <script>
-     function fetchData() {
-             fetch("fetchData")
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error("fail");
-                }
-                return response.json();
-            })
-            .then(data => {
-                const resultContainer = document.getElementById("result");
-                const p = document.createElement("p");
-                p.textContent = JSON.stringify(data);
-                resultContainer.innerHTML = ''; //
-                resultContainer.appendChild(p);
-            })
-            .catch(error => console.error('Fetch error:', error));
+    function fetchData() {
+        fetch('fetchData')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Network response was not ok");
+            }
+            return response.json();
+        })
+        .then(data => {
+            const resultContainer = document.getElementById("result");
+            resultContainer.innerHTML = ''; // Clear previous results
+
+            // Assuming 'data' is an array of Suggestion objects
+            data.forEach(item => {
+                const div = document.createElement("div");
+                // Access 'term' property of each Suggestion object
+                div.textContent = `Term: ${item.term}`;
+                resultContainer.appendChild(div);
+            });
+        })
+        .catch(error => console.error('Fetch error:', error));
     }
 </script>
 </body>

@@ -29,6 +29,15 @@
     </dependency>
 
     <dependency>
+      <groupId>jakarta.servlet.jsp.jstl</groupId>
+      <artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
+      <version>1.2.7</version>
+    </dependency>
+
+
+
+
+    <dependency>
       <groupId>org.mariadb.jdbc</groupId>
       <artifactId>mariadb-java-client</artifactId>
       <version>2.7.6</version> <!-- Använd senaste kompatibla versionen för MariaDB 10.11.7 -->
@@ -51,5 +60,15 @@
   </dependencies>
   <build>
     <finalName>Java23-WebDevJava-GritAcademyPortal-Alexander-Jansson</finalName>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>9</source>
+          <target>9</target>
+        </configuration>
+      </plugin>
+    </plugins>
   </build>
 </project>
