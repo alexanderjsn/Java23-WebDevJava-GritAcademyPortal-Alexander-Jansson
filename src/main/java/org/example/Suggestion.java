@@ -1,19 +1,19 @@
 package org.example;
 
 public class Suggestion {
-    private String term;
+    private String ingrediens;
 
     public Suggestion() {}
 
-    public Suggestion(String term) {
-        this.term = term;
+    public Suggestion(String ingrediens) {
+        this.ingrediens = ingrediens;
     }
 
-    public String getTerm() {
-        return term;
+    public String getingrediens() {
+        return ingrediens;
     }
 
-    public void setTerm(String term) {
-        this.term = term;
+    public void setingrediens(String ingrediens) {
+        this.ingrediens = ingrediens;
     }
 }

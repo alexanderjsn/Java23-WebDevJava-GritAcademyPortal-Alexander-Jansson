@@ -10,10 +10,11 @@ import java.util.List;
 
 public class dao {
 
-    private static final String sql = "SELECT ingrediens FROM ingredienser WHERE ingrediens LIKE ?";
+    private static final String sql = "SELECT * FROM ingredienser WHERE ingrediens LIKE ? LIMIT 10";
 
-    public List<Suggestion> getSuggestions(String queryTerm) throws SQLException {
+    public List<Suggestion> getSuggestions(String queryTerm)  {
         List<Suggestion> suggestions = new ArrayList<>();
+
         try (Connection connection = DBconnector.getConnection();
         PreparedStatement pstmt = connection.prepareStatement(sql)){
         pstmt.setString(1, "%" + queryTerm + "%");
@@ -23,7 +24,10 @@ public class dao {
             suggestions.add(new Suggestion(query));
         }
 
-            }return suggestions;}}
+            } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return suggestions;}}
 
         /*
         PreparedStatement pstm = connection.prepareStatement(sql);

@@ -20,15 +20,13 @@ import java.util.List;
     @WebServlet("/fetchData")
     public class FetchDataServlet extends HttpServlet {
 
-
+    private final dao Dao = new dao();
         protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-            List<Suggestion> suggestions = new ArrayList<>();
-            suggestions.add(new Suggestion("1"));
-            suggestions.add(new Suggestion("2"));
-            suggestions.add(new Suggestion("3"));
+            String queryTerm = request.getParameter("queryTerm");
+            List<Suggestion> suggestions = Dao.getSuggestions(queryTerm);
 
             Gson gson = new Gson();
-            String json = gson.toJson(suggestions); // This will ensure "test" is properly quoted
+            String json = gson.toJson(suggestions);
 
             // Set the response type to JSON
             response.setContentType("application/json");

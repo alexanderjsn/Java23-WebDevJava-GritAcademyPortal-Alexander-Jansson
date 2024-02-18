@@ -5,33 +5,35 @@
     <title>Title</title>
 </head>
 <body>
-<input type="text" id="queryTerm" placeholder="Sök...">
+
+<input type="text" id="queryTermInput" name="queryTerm" placeholder="Sök..." oninput="fetchData()">
 <button onclick="fetchData()">Sök</button>
 
 <div id="result"></div>
 
 <script>
     function fetchData() {
-        fetch('fetchData')
-        .then(response => {
-            if (!response.ok) {
-                throw new Error("Network response was not ok");
-            }
-            return response.json();
-        })
-        .then(data => {
-            const resultContainer = document.getElementById("result");
-            resultContainer.innerHTML = ''; // Clear previous results
+        const queryTerm = document.getElementById("queryTermInput").value;
+        if (queryTerm !== "") {
+        fetch('fetchData?queryTerm=' + encodeURIComponent(queryTerm))
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("Network response was not ok");
+                }
+                return response.json();
+            })
+            .then(data => {
+                const resultContainer = document.getElementById("result");
+                resultContainer.innerHTML = '';
 
-            // Assuming 'data' is an array of Suggestion objects
-            data.forEach(item => {
-                const div = document.createElement("div");
-                // Access 'term' property of each Suggestion object
-                div.textContent = `Term: ${item.term}`;
-                resultContainer.appendChild(div);
-            });
-        })
-        .catch(error => console.error('Fetch error:', error));
+                data.forEach(item => {
+                    const div = document.createElement("div");
+                    div.textContent = `Term: ${item.ingrediens}`;
+                    resultContainer.appendChild(div);
+                });
+            })
+            .catch(error => console.error('Fetch error:', error));
+        }
     }
 </script>
 </body>
