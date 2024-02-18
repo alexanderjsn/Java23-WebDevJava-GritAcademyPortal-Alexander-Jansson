@@ -5,8 +5,29 @@
     <title>Title</title>
 </head>
 <body>
-
-
-<input type="text" id="searchInput" placeholder="Sök..." oninput="startTimer()">
+<input type="text" id="inputBox" placeholder="Sök...">
+<div id="test">
+    <button onclick="fetchData()">Lägg till Paragraf</button>
+</div>
+<div id="result"></div>
+<script>
+     function fetchData() {
+             fetch("fetchData")
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("fail");
+                }
+                return response.json();
+            })
+            .then(data => {
+                const resultContainer = document.getElementById("result");
+                const p = document.createElement("p");
+                p.textContent = JSON.stringify(data);
+                resultContainer.innerHTML = ''; //
+                resultContainer.appendChild(p);
+            })
+            .catch(error => console.error('Fetch error:', error));
+    }
+</script>
 </body>
 </html>
