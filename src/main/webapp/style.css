@@ -1,0 +1,14 @@
+p:hover {
+    background-color: yellow;
+    cursor: pointer;
+}
+
+#result  {
+display: block;
+}
+
+#result .student-entry {
+            display: flex;
+            gap: 5px;
+            margin-bottom: -5px;
+            }

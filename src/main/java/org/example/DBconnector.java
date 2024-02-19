@@ -16,7 +16,7 @@ public class DBconnector {
             // kollar om connection finns eller om en är stängds
             if(connection == null || connection.isClosed()) {
                 Class.forName("com.mysql.cj.jdbc.Driver");
-                connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/recept", "root", "103eec29f");
+                connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/gritacademy", "root", "103eec29f");
 
             }
         } catch (SQLException e) {

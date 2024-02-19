@@ -23,7 +23,7 @@ import java.util.List;
     private final dao Dao = new dao();
         protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
             String queryTerm = request.getParameter("queryTerm");
-            List<Suggestion> suggestions = Dao.getSuggestions(queryTerm);
+            List<student> suggestions = Dao.getSuggestions(queryTerm);
 
             Gson gson = new Gson();
             String json = gson.toJson(suggestions);

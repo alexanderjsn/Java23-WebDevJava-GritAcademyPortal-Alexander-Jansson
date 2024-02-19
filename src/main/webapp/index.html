@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <input type="text" id="queryTermInput" name="queryTerm" placeholder="Sök..." oninput="fetchData()">
-<button onclick="fetchData()">Sök</button>
+<button>Sök</button>
 
 <div id="result"></div>
 
@@ -15,26 +16,47 @@
     function fetchData() {
         const queryTerm = document.getElementById("queryTermInput").value;
         if (queryTerm !== "") {
-        fetch('fetchData?queryTerm=' + encodeURIComponent(queryTerm))
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error("Network response was not ok");
-                }
-                return response.json();
-            })
-            .then(data => {
-                const resultContainer = document.getElementById("result");
-                resultContainer.innerHTML = '';
+            fetch('fetchData?queryTerm=' + encodeURIComponent(queryTerm))
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error("Network response was not ok");
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    const resultContainer = document.getElementById("result");
+                    resultContainer.innerHTML = ''; // Rensa en gång innan du lägger till alla barn
 
-                data.forEach(item => {
-                    const div = document.createElement("div");
-                    div.textContent = `Term: ${item.ingrediens}`;
-                    resultContainer.appendChild(div);
-                });
-            })
-            .catch(error => console.error('Fetch error:', error));
+                    data.forEach(student => {
+                        const studentDiv = document.createElement("div");
+                        studentDiv.classList.add("student-entry");
+                        const studentIdP = document.createElement("p");
+                        studentIdP.textContent = `ID: ${student.student_id}`;
+                        studentDiv.appendChild(studentIdP);
+
+                        const fnameP = document.createElement("p");
+                        fnameP.textContent = `${student.fname}`;
+                        studentDiv.appendChild(fnameP);
+
+                        const lnameP = document.createElement("p");
+                        lnameP.textContent = `${student.lname}`;
+                        studentDiv.appendChild(lnameP);
+
+
+
+                        resultContainer.appendChild(studentDiv);
+
+                        studentDiv.addEventListener("click", function() {
+                            const userInput = document.getElementById("queryTermInput");
+                            userInput.value = student.student_id;
+                        });
+                    });
+                })
+                .catch(error => console.error('Fetch error:', error));
         }
     }
 </script>
+
+
 </body>
 </html>
