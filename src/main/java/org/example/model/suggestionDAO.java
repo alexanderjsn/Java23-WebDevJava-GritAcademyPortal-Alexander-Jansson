@@ -1,4 +1,8 @@
-package org.example;
+package org.example.model;
+
+import org.example.delete.DBconnector;
+import org.example.delete.student;
+import util.DBConnectionUtil;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -9,14 +13,14 @@ import java.util.List;
 
 
 
-public class dao {
+public class suggestionDAO {
     // Uppdaterad SQL-fråga för att matcha de nya kolumnerna
     private static final String sql = "SELECT student_id, Fname, Lname, hobby, city FROM students WHERE Fname LIKE ? OR Lname LIKE ? LIMIT 5";
 
     public List<student> getSuggestions(String queryTerm) {
         List<student> students = new ArrayList<>();
 
-        try (Connection connection = DBconnector.getConnection();
+        try (Connection connection = DBConnectionUtil.getConnection();
              PreparedStatement pstmt = connection.prepareStatement(sql)) {
             pstmt.setString(1, "%" + queryTerm + "%");
             pstmt.setString(2, "%" + queryTerm + "%");

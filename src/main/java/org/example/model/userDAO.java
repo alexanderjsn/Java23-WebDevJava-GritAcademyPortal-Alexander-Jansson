@@ -1,5 +1,6 @@
-package org.example;
+package org.example.model;
 
+import org.example.delete.DBconnector;
 import util.DBConnectionUtil;
 
 import java.sql.Connection;
@@ -31,7 +32,7 @@ public class userDAO {
     public void registerUser(String name, String email, String phone, String password, String username)  {
 
         try (Connection connection = DBconnector.getConnection();
-        PreparedStatement pstmt = connection.prepareStatement(REGISTER_USER)) {
+             PreparedStatement pstmt = connection.prepareStatement(REGISTER_USER)) {
             pstmt.setString(1, name);
             pstmt.setString(2, email);
             pstmt.setString(3, phone);

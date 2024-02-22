@@ -1,4 +1,4 @@
-package org.example;
+package org.example.controller;
 import com.google.gson.Gson;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
