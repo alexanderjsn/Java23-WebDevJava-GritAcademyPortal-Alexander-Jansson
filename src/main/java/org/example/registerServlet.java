@@ -30,7 +30,7 @@ public class registerServlet extends HttpServlet {
         String email = req.getParameter("email");
         String phone = req.getParameter("phone");
 
-        userdao.registerUser0(username,name,phone,email,password);
+        userdao.registerUser(username,name,phone,email,password);
 
         RequestDispatcher dispatcher = req.getRequestDispatcher("index.jsp");
         dispatcher.forward(req,rep);

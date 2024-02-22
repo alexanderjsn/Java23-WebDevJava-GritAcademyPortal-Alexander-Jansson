@@ -1,5 +1,7 @@
 package org.example;
 
+import util.DBConnectionUtil;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -13,7 +15,7 @@ public class userDAO {
 
 
     public boolean checkLogin(String username, String password) throws SQLException {
-        try (Connection connection = DBconnector.getConnection();
+        try (Connection connection = DBConnectionUtil.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(CHECK_LOGIN)) {
             preparedStatement.setString(1, username);
             preparedStatement.setString(2, password);
@@ -26,7 +28,7 @@ public class userDAO {
     }
 
 
-    public void registerUser0(String name, String email, String phone, String password, String username)  {
+    public void registerUser(String name, String email, String phone, String password, String username)  {
 
         try (Connection connection = DBconnector.getConnection();
         PreparedStatement pstmt = connection.prepareStatement(REGISTER_USER)) {

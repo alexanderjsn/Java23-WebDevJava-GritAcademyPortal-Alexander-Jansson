@@ -28,7 +28,7 @@ public class loginServlet extends HttpServlet {
         HttpSession session = req.getSession();
 
 
-
+        // loggas ut efter 30min
         session.setMaxInactiveInterval(30*60);
 
         //XSS skydd
