@@ -18,32 +18,21 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+
 @WebServlet("/register")
 public class registerServlet extends HttpServlet {
 
+    private static final userDAO userdao = new userDAO();
     protected void doPost(HttpServletRequest req, HttpServletResponse rep) throws ServletException, IOException {
         String username = req.getParameter("username");
         String password = req.getParameter("password");
+        String name = req.getParameter("name");
+        String email = req.getParameter("email");
+        String phone = req.getParameter("phone");
 
-        HttpSession session = req.getSession();
+        userdao.registerUser0(username,name,phone,email,password);
 
-        // rensar tidigare session id
-        session.invalidate();
-
-
-        session.setMaxInactiveInterval(30*60);
-
-        //XSS skydd
-
-        // CSRF skydd
-        String csrfToken = UUID.randomUUID().toString();
-        session.setAttribute("csrfToken",csrfToken);
-
-
-
-        //skapa påminnelse
-        session.setAttribute("user", username);
-        RequestDispatcher dispatcher = req.getRequestDispatcher("login.jsp");
+        RequestDispatcher dispatcher = req.getRequestDispatcher("index.jsp");
         dispatcher.forward(req,rep);
 
     }

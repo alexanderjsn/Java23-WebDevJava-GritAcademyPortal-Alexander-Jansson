@@ -27,8 +27,6 @@ public class loginServlet extends HttpServlet {
 
         HttpSession session = req.getSession();
 
-        // rensar tidigare session id
-        session.invalidate();
 
 
         session.setMaxInactiveInterval(30*60);
@@ -43,7 +41,7 @@ public class loginServlet extends HttpServlet {
 
         //skapa påminnelse
         session.setAttribute("user", username);
-        RequestDispatcher dispatcher = req.getRequestDispatcher("login.jsp");
+        RequestDispatcher dispatcher = req.getRequestDispatcher("home.jsp");
         dispatcher.forward(req,rep);
 
     }

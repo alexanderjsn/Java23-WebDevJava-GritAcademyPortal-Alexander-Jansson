@@ -9,7 +9,7 @@ public class userDAO {
 
 
     private String CHECK_LOGIN = "SELECT * FROM users WHERE username = ? AND password = ?";
-    private String REGISTER_USER = "INSERT INTO userTable (name, email, phone, password, username) VALUES (?,?)";
+    private String REGISTER_USER = "INSERT INTO users (name, email, phone, password, username) VALUES (?,?,?,?,?)";
 
 
     public boolean checkLogin(String username, String password) throws SQLException {

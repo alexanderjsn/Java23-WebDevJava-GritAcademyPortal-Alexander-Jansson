@@ -1,5 +1,5 @@
 <html>
 <body>
-<h2>Registered!</h2>
+<h2>Welcome!</h2>
 </body>
 </html>
