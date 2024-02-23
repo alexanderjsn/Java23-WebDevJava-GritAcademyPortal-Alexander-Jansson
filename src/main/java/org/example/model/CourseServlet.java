@@ -23,19 +23,6 @@ public class CourseServlet extends HttpServlet {
         RequestDispatcher dispatcher = request.getRequestDispatcher("allCourses.jsp");
         dispatcher.forward(request, response);
     }
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        // hämta in form data
-        String name = request.getParameter("name");
-        int yhp = Integer.parseInt(request.getParameter("yhp"));
-        String description = request.getParameter("description");
-
-        // Hämta DAO
-        // lägger in data från form
-        courseDAO.addCourses(name, yhp, description);
-
-        // skickar ut igen
-        response.sendRedirect("course-list.jsp");
-    }
 
 }
