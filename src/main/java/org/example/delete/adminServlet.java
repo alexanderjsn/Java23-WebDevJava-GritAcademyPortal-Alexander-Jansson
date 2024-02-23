@@ -6,9 +6,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import org.example.delete.Course;
-import org.example.delete.CourseDAO;
-import org.example.delete.StudentDAO;
+import org.example.model.CourseDAO;
 import org.example.model.Student;
 
 import java.io.IOException;

@@ -1,5 +1,6 @@
-package org.example.delete;
+package org.example.model;
 
+import org.example.delete.Course;
 import util.DBConnectionUtil;
 
 import java.sql.Connection;
@@ -13,18 +14,19 @@ public class CourseDAO {
     private static final String SELECT_ALL_COURSES = "SELECT * FROM courses;";
     private static final String INSERT_STUDENTS = "INSERT INTO students (name, YHP, description) VALUES (?, ?, ?);";
 
-    public List<Course> selectAllCourses() {
-        List<Course> courses = new ArrayList<>();
+    public List<CourseBean> selectAllCourses() {
+        List<CourseBean> courses = new ArrayList<>();
         try (Connection connection = DBConnectionUtil.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL_COURSES);
              ResultSet rs = preparedStatement.executeQuery()) {
 
             while (rs.next()) {
-                int courseId = rs.getInt("course_id");
-                String name = rs.getString("name");
-                int yhp = rs.getInt("YHP");
-                String description = rs.getString("description");
-                courses.add(new Course(courseId, name, yhp, description));
+                CourseBean course = new CourseBean();
+                course.setId(rs.getInt("id"));
+                course.setName(rs.getString("name"));
+                course.setYHP(rs.getInt("YHP"));
+                course.getDescription(rs.getString("description");
+                courses.add(course);
             }
         } catch (SQLException e) {
             e.printStackTrace();
