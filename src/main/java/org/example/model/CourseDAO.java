@@ -17,9 +17,46 @@ public class CourseDAO {
             "JOIN users u ON u.id = cp.user_id " +
             "WHERE u.username = ?";
 
+
+    private static final String SELECT_USER_COURSES = "SELECT course_id FROM courseparticipants cp JOIN users u ON cp.user_id = u.id WHERE u.username = ?";
+
     private static final String SELECT_ALL = "SELECT * FROM courses";
     private static final String INSERT_STUDENT_INTO_COURSE = "INSERT INTO courseparticipants (user_id, course_id, role) VALUES (?, ?, ?);";
-    public List<CourseBean> selectStudentCourses(String username) {
+
+    String SELECT_OTHER_USERS = "SELECT u.* FROM users u JOIN courseparticipants cp ON u.id = cp.user_id WHERE cp.course_id = ? AND u.username != ?";
+
+    public List<UserBean> studentSamecourse(String username){
+        List<UserBean> studentSamecourse = new ArrayList<>();
+        try(Connection connection = DBConnectionUtil.getConnection()) {
+        PreparedStatement pstmt = connection.prepareStatement(SELECT_USER_COURSES);
+        pstmt.setString(1,username);
+        ResultSet rs = pstmt.executeQuery();
+        while (rs.next()){
+            int courseID = rs.getInt("course_id");
+            try(PreparedStatement pstmtOtherUsers = connection.prepareStatement(SELECT_OTHER_USERS)){
+                pstmtOtherUsers.setInt(1,courseID);
+                pstmtOtherUsers.setString(2,username);
+                ResultSet rsOtherUsers = pstmtOtherUsers.executeQuery();
+
+                while(rsOtherUsers.next()){
+                    UserBean user = new UserBean();
+                    user.setId(rsOtherUsers.getInt("id"));
+                    user.setUsername(rsOtherUsers.getString("username"));
+                    user.setRole(rsOtherUsers.getString("role"));
+                    studentSamecourse.add(user);
+                }
+            }
+        }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } ;
+
+        return studentSamecourse;
+    }
+
+    public List
+            <CourseBean> selectStudentCourses(String username) {
         List<CourseBean> studentCourses = new ArrayList<>();
 
         try (Connection connection = DBConnectionUtil.getConnection();
