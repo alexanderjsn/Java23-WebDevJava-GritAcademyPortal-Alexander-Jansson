@@ -6,6 +6,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import org.example.model.CourseBean;
 import org.example.model.CourseDAO;
 import org.example.model.Student;
 
@@ -20,7 +21,7 @@ public class adminServlet extends HttpServlet {
     private StudentDAO studentDAO = new StudentDAO();
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<Course> listCourse = courseDAO.selectAllCourses();
+        List<CourseBean> listCourse = courseDAO.selectAllCourses();
         List<Student> listStudent = studentDAO.selectAllStudents();
 
 
