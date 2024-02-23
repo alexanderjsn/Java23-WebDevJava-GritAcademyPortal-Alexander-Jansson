@@ -13,7 +13,7 @@ import org.example.model.CourseDAO;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet("/adminCourses")
+@WebServlet("/allCourses")
 public class CourseServlet extends HttpServlet {
     private final CourseDAO courseDAO = new CourseDAO();
 
@@ -24,7 +24,7 @@ public class CourseServlet extends HttpServlet {
         UserBean user = (UserBean) session.getAttribute("user");
 
         // är användare inloggad + student annars redirect
-        if(user == null || !"student".equals(user.getRole())){
+        if(user == null || !"teacher".equals(user.getRole())){
             response.sendRedirect("home.jsp");
             return;
         }

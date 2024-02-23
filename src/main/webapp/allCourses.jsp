@@ -2,6 +2,8 @@
 <html>
 <head>
     <title>alla kurser</title>
+      <%@ page import="java.util.List" %>
+        <%@ page import="org.example.model.CourseBean" %>
 </head>
 <body>
 <h2>All Courses</h2>
