@@ -4,6 +4,9 @@
     <title>Studentens Kurser</title>
       <%@ page import="java.util.List" %>
         <%@ page import="org.example.model.CourseBean" %>
+<%@ page import="org.example.model.UserBean" %>
+
+
 </head>
 <body>
 <h2>My Courses</h2>
@@ -24,5 +27,27 @@
         </tr>
     <% } %>
     </table>
-</body>
+<table border="1">
+<tr>
+    <th>Student Name</th>
+    <th>Username</th>
+    <th>Role</th>
+</tr>
+<%
+    List<UserBean> sameStudents = (List<UserBean>) request.getAttribute("sameStudents");
+    if (sameStudents != null) {
+        for (UserBean student : sameStudents) {
+%>
+<tr>
+    <td><%= student.getfName() %> <%= student.getlName() %></td>
+    <td><%= student.getUsername() %></td>
+    <td><%= student.getRole() %></td>
+</tr>
+<%
+        }
+    }
+%>
+</table>
+
+    </body>
 </html>

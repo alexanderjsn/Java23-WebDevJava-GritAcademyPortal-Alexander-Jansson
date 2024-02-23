@@ -10,6 +10,7 @@ public class CourseBean implements Serializable {
     private int YHP;
     private String description;
 
+
     public CourseBean(){}
 
     public int getId() {
