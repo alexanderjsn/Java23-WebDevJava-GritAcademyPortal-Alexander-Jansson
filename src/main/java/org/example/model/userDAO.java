@@ -1,4 +1,4 @@
-package org.example.delete;
+package org.example.model;
 
 import org.example.delete.DBconnector;
 import util.DBConnectionUtil;
@@ -15,19 +15,25 @@ public class userDAO {
     private String REGISTER_USER = "INSERT INTO users (name, email, phone, password, username) VALUES (?,?,?,?,?)";
 
 
-    public boolean checkLogin(String username, String password)  {
+    public UserBean checkLogin(String username, String password)  {
+        UserBean user = new UserBean();
         try (Connection connection = DBConnectionUtil.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(CHECK_LOGIN)) {
             preparedStatement.setString(1, username);
             preparedStatement.setString(2, password);
             ResultSet rs = preparedStatement.executeQuery();
+            // om det finns en användare
             if (rs.next()) {
-                return true;
+                // sätt nytt värde på setters under sessions gåmng
+                user.setId(Integer.parseInt("id"));
+                user.setUsername(rs.getString("username"));
+                user.setRole(rs.getString("role"));
+
             }
-            return false;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+        return user;
     }
 
 
