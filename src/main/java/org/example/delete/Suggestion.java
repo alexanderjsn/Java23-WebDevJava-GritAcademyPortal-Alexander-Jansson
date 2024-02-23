@@ -1,4 +1,4 @@
-package org.example.model;
+package org.example.delete;
 
 public class Suggestion {
     private String ingrediens;

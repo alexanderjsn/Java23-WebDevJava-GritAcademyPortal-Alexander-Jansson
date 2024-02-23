@@ -1,4 +1,4 @@
-package org.example.controller;
+package org.example.delete;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -6,7 +6,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import org.example.model.StudentDAO;
+import org.example.delete.StudentDAO;
 import org.example.model.Student;
 
 import java.io.IOException;

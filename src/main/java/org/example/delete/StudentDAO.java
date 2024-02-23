@@ -1,4 +1,4 @@
-package org.example.model;
+package org.example.delete;
 
 import org.example.model.Student;
 import util.DBConnectionUtil;

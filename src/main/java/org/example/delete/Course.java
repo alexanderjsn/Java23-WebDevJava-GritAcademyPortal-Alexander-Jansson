@@ -1,4 +1,4 @@
-package org.example.model;
+package org.example.delete;
 
 public class Course {
     private int courseId;
@@ -12,6 +12,10 @@ public class Course {
         this.name = name;
         this.yhp = yhp;
         this.description = description;
+    }
+
+    public Course() {
+
     }
 
     // Getters och setters
@@ -39,7 +43,7 @@ public class Course {
         this.yhp = yhp;
     }
 
-    public String getDescription() {
+    public String getDescription(String getDescription) {
         return description;
     }
 

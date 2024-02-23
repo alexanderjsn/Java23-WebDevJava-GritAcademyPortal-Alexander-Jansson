@@ -3,60 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-<input type="text" id="queryTermInput" name="queryTerm" placeholder="Sök..." oninput="fetchData()">
-<button>Sök</button>
-<a href="inloggning.html">log</a>
-<div id="result"></div>
-
-<script>
-    function fetchData() {
-        const queryTerm = document.getElementById("queryTermInput").value;
-        if (queryTerm !== "") {
-            fetch('fetchData?queryTerm=' + encodeURIComponent(queryTerm))
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error("Network response was not ok");
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    const resultContainer = document.getElementById("result");
-                    resultContainer.innerHTML = ''; // Rensa en gång innan du lägger till alla barn
-
-                    data.forEach(student => {
-                        const studentDiv = document.createElement("div");
-                        studentDiv.classList.add("student-entry");
-                        const studentIdP = document.createElement("p");
-                        studentIdP.textContent = `ID: ${student.student_id}`;
-                        studentDiv.appendChild(studentIdP);
-
-                        const fnameP = document.createElement("p");
-                        fnameP.textContent = `${student.fname}`;
-                        studentDiv.appendChild(fnameP);
-
-                        const lnameP = document.createElement("p");
-                        lnameP.textContent = `${student.lname}`;
-                        studentDiv.appendChild(lnameP);
-
-
-
-                        resultContainer.appendChild(studentDiv);
-
-                        studentDiv.addEventListener("click", function() {
-                            const userInput = document.getElementById("queryTermInput");
-                            userInput.value = student.student_id;
-                        });
-                    });
-                })
-                .catch(error => console.error('Fetch error:', error));
-        }
-    }
-</script>
-
-
+<h1>sifjospgopwsjv</h1>
 </body>
 </html>

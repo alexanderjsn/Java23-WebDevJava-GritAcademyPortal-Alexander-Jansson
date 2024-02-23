@@ -20,6 +20,9 @@ public class Student {
     public Student(String firstName) {
     }
 
+    public Student(int id, int studentId, int courseId, int teacherId) {
+    }
+
     // Getter- och sette
     public int getStudentId() {
         return student_id;

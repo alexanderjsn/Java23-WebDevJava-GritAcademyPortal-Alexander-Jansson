@@ -16,7 +16,7 @@ public class DBConnectionUtil {
         try{
             if (connection == null || connection.isClosed()){
                 Class.forName("org.mariadb.jdbc.Driver");
-                connection = DriverManager.getConnection("jdbc:mariadb://localhost:3306/gritacademy", "root", "103eec29f");
+                connection = DriverManager.getConnection("jdbc:mariadb://localhost:3306/grit-academy", "root", "103eec29f");
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);

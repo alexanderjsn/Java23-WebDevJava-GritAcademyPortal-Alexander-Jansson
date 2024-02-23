@@ -1,6 +1,5 @@
-package org.example.model;
+package org.example.delete;
 
-import org.example.model.Course;
 import util.DBConnectionUtil;
 
 import java.sql.Connection;
@@ -12,6 +11,7 @@ import java.util.List;
 
 public class CourseDAO {
     private static final String SELECT_ALL_COURSES = "SELECT * FROM courses;";
+    private static final String INSERT_STUDENTS = "INSERT INTO students (name, YHP, description) VALUES (?, ?, ?);";
 
     public List<Course> selectAllCourses() {
         List<Course> courses = new ArrayList<>();
@@ -31,5 +31,18 @@ public class CourseDAO {
         }
         return courses;
     }
+    public void addCourses(String name, int yhp, String description){
+        try(Connection connection = DBConnectionUtil.getConnection()){
+            PreparedStatement pstmt = connection.prepareStatement(INSERT_STUDENTS);
+            pstmt.setString(1,name);
+            pstmt.setInt(2,yhp);
+            pstmt.setString(3,description);
+            pstmt.executeUpdate();
+            pstmt.close();
+        } catch (SQLException e){
+            throw new RuntimeException(e);
+        }
+    }
+
 
 }

@@ -30,22 +30,16 @@
     </tr>
     <% } %>
     <form action="AddStudentServlet" method="post">
-        Namn: <input type="text" name="Fname"><br>
-        Efternamn: <input type="text" name="Lname"><br>
-        Hobby: <input type="text" name="hobby"><br>
-        Stad: <input type="text" name="city"><br>
+        Namn: <input type="text" name="Fname" id="nameInput"><br>
+        Efternamn: <input type="text" name="Lname" id="lnameInput"><br>
+        Hobby: <input type="text" name="hobby" id="hobby"><br>
+        Stad: <input type="text" name="city"id="city"><br>
 
         <input type="submit" value="Lägg till student">
     </form>
 
-    <h2>Sök Studenter</h2>
-    <form action="studentServlet" method="post">
-        <label for="searchName">Sök efter studentnamn:</label>
-        <input type="text" id="searchName" name="searchName">
-        <input type="submit" value="Sök">
-    </form>
-
-
 </table>
+
+
 </body>
 </html>

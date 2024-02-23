@@ -1,6 +1,7 @@
 <%@ page import="java.util.List" %>
 <%@ page import="org.example.model.Course" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <html>
 <head>
     <title>Kurslista</title>
@@ -27,6 +28,12 @@
     </tr>
     <% } %>
 </table>
+  <form action="CourseServlet" method="post">
+        Name: <input type="text" name="name" id="nameInput"><br>
+        YHP: <input type="number" name="yhp" id="lnameInput"><br>
+        Description: <input type="text" name="description" id="hobby"><br>
 
+        <input type="submit" value="Lägg till student">
+    </form>
 </body>
 </html>

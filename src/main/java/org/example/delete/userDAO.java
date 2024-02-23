@@ -1,4 +1,4 @@
-package org.example.model;
+package org.example.delete;
 
 import org.example.delete.DBconnector;
 import util.DBConnectionUtil;
@@ -15,7 +15,7 @@ public class userDAO {
     private String REGISTER_USER = "INSERT INTO users (name, email, phone, password, username) VALUES (?,?,?,?,?)";
 
 
-    public boolean checkLogin(String username, String password) throws SQLException {
+    public boolean checkLogin(String username, String password)  {
         try (Connection connection = DBConnectionUtil.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(CHECK_LOGIN)) {
             preparedStatement.setString(1, username);
@@ -25,6 +25,8 @@ public class userDAO {
                 return true;
             }
             return false;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
     }
 
