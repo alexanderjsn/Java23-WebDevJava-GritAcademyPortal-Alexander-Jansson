@@ -7,6 +7,9 @@
 
 </head>
 <body>
+<h2>Logga in</h2>
+
+
 <form action="loginServlet" method="POST">
     Username: <input type="text" name="username"><br>
     Password: <input type="password" name="password"><br>
@@ -15,18 +18,19 @@
 
 </form>
 
-<br>
-<br>
-<br>
+<h2>Register</h2>
 
 <form action="register" method="POST">
-    Username: <input type="text" name="username"><br>
-    Password: <input type="password" name="password"><br>
-    Name: <input type="name" name="name"><br>
-    Phone: <input type="phone" name="phone"><br>
-    Email: <input type="email" name="email"><br>
+    First name: <input type="text" name="fName" required><br><br>
+    Last name  : <input type="text" name="lName" required><br><br>
+    Username: <input type="text" name="username" required><br><br>
+    Password: <input type="password" name="password" required><br><br>
+    Roll:
+    <select name="role">
+        <option value="student">Student</option>
+        <option value="teacher">Teacher</option>
+    </select><br><br>
     <input type="submit" value="Registrera">
-    <!--vänd sida tillbaka till inlog med confirmation ovanpå, ajax? -->
 </form>
 
 </body>

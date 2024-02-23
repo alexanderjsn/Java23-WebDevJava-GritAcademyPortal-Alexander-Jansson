@@ -21,7 +21,7 @@ public class StudentCoursesServlet extends HttpServlet {
 
         // är användare inloggad + student annars redirect
         if(user == null || !"student".equals(user.getRole())){
-            response.sendRedirect("login.jsp");
+            response.sendRedirect("home.jsp");
             return;
         }
         CourseDAO courseDAO = new CourseDAO();

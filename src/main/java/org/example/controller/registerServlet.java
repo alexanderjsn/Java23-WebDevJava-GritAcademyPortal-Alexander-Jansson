@@ -14,17 +14,18 @@ import java.io.IOException;
 public class registerServlet extends HttpServlet {
 
     private static final userDAO userdao = new userDAO();
-    protected void doPost(HttpServletRequest req, HttpServletResponse rep) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String username = req.getParameter("username");
         String password = req.getParameter("password");
-        String name = req.getParameter("name");
+        String fName = req.getParameter("fName");
+        String lName = req.getParameter("lName");
         String email = req.getParameter("email");
         String phone = req.getParameter("phone");
+        String role = req.getParameter("role");
 
-        userdao.registerUser(username,name,phone,email,password);
+        userdao.registerUser(username, fName, lName, phone, email, password, role);
 
-        RequestDispatcher dispatcher = req.getRequestDispatcher("index.jsp");
-        dispatcher.forward(req,rep);
-
+        RequestDispatcher dispatcher = req.getRequestDispatcher("home.jsp");
+        dispatcher.forward(req, resp);
     }
 }

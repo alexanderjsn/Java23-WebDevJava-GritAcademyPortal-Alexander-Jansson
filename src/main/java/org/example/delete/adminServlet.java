@@ -21,12 +21,10 @@ public class adminServlet extends HttpServlet {
     private StudentDAO studentDAO = new StudentDAO();
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<CourseBean> listCourse = courseDAO.selectAllCourses();
         List<Student> listStudent = studentDAO.selectAllStudents();
 
 
         request.setAttribute("listStudent", listStudent);
-        request.setAttribute("listCourse", listCourse);
 
         RequestDispatcher dispatcher = request.getRequestDispatcher("admin.jsp");
         dispatcher.forward(request, response);

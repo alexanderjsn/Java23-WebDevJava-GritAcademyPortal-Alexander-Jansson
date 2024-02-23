@@ -12,7 +12,7 @@ public class userDAO {
 
 
     private String CHECK_LOGIN = "SELECT * FROM users WHERE username = ? AND password = ?";
-    private String REGISTER_USER = "INSERT INTO users (name, email, phone, password, username) VALUES (?,?,?,?,?)";
+    private String REGISTER_USER = "INSERT INTO users (username, fName, lName, phone, email, password, role) VALUES (?,?,?,?,?,?,?)";
 
 
     public UserBean checkLogin(String username, String password)  {
@@ -25,7 +25,7 @@ public class userDAO {
             // om det finns en användare
             if (rs.next()) {
                 // sätt nytt värde på setters under sessions gåmng
-                user.setId(Integer.parseInt("id"));
+                user.setId(rs.getInt("id"));
                 user.setUsername(rs.getString("username"));
                 user.setRole(rs.getString("role"));
 
@@ -37,15 +37,16 @@ public class userDAO {
     }
 
 
-    public void registerUser(String name, String email, String phone, String password, String username)  {
-
-        try (Connection connection = DBconnector.getConnection();
+    public void registerUser(String username, String fName, String lName, String phone, String email, String password, String role)  {
+        try (Connection connection = DBConnectionUtil.getConnection();
              PreparedStatement pstmt = connection.prepareStatement(REGISTER_USER)) {
-            pstmt.setString(1, name);
-            pstmt.setString(2, email);
-            pstmt.setString(3, phone);
-            pstmt.setString(4, password);
-            pstmt.setString(5, username);
+            pstmt.setString(1, username);
+            pstmt.setString(2, fName);
+            pstmt.setString(3, lName);
+            pstmt.setString(4, phone);
+            pstmt.setString(5, email);
+            pstmt.setString(6, password);
+            pstmt.setString(7, role);
             pstmt.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
