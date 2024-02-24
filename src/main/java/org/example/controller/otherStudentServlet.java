@@ -8,6 +8,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import org.example.model.CourseDAO;
+import org.example.model.CourseparticipantsBeans;
 import org.example.model.UserBean;
 
 import java.io.IOException;
@@ -25,7 +26,7 @@ public class otherStudentServlet extends HttpServlet {
         }
 
         CourseDAO courseDAO = new CourseDAO();
-        List<UserBean> sameStudents = courseDAO.studentSamecourse(user.getUsername());
+        List<CourseparticipantsBeans> sameStudents = courseDAO.studentSamecourse(user.getUsername());
 
         req.setAttribute("sameStudents", sameStudents);
         RequestDispatcher dispatcher = req.getRequestDispatcher("studentCourses.jsp");

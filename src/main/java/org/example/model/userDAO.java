@@ -1,6 +1,5 @@
 package org.example.model;
 
-import org.example.delete.DBconnector;
 import util.DBConnectionUtil;
 
 import java.sql.Connection;

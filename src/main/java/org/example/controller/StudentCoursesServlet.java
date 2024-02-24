@@ -1,4 +1,4 @@
-package org.example.model;
+package org.example.controller;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -6,8 +6,10 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import org.example.delete.Course;
+
+import org.example.model.CourseBean;
 import org.example.model.CourseDAO;
+import org.example.model.UserBean;
 
 import java.io.IOException;
 import java.util.List;

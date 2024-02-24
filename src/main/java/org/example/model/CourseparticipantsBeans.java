@@ -8,6 +8,7 @@ public class CourseparticipantsBeans implements Serializable {
     private int user_id;
     private int course_id;
     private String role;
+
     public CourseparticipantsBeans(){}
 
     public int getId() {
@@ -41,9 +42,6 @@ public class CourseparticipantsBeans implements Serializable {
     public void setRole(String role) {
         this.role = role;
     }
-
-
-
 
 
 }

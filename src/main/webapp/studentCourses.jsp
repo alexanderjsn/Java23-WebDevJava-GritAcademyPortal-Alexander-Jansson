@@ -4,7 +4,7 @@
     <title>Studentens Kurser</title>
       <%@ page import="java.util.List" %>
         <%@ page import="org.example.model.CourseBean" %>
-<%@ page import="org.example.model.UserBean" %>
+<%@ page import="org.example.model.CourseparticipantsBeans" %>
 
 
 </head>
@@ -34,13 +34,14 @@
     <th>Role</th>
 </tr>
 <%
-    List<UserBean> sameStudents = (List<UserBean>) request.getAttribute("sameStudents");
+    List<CourseparticipantsBeans> sameStudents = (List<CourseparticipantsBeans>) request.getAttribute("sameStudents");
     if (sameStudents != null) {
-        for (UserBean student : sameStudents) {
+        for (CourseparticipantsBeans student : sameStudents) {
 %>
 <tr>
-    <td><%= student.getfName() %> <%= student.getlName() %></td>
-    <td><%= student.getUsername() %></td>
+    <td><%= student.getId() %> </td>
+    <td><%= student.getUser_id() %></td>
+        <td><%= student.getUser_id() %></td>
     <td><%= student.getRole() %></td>
 </tr>
 <%
