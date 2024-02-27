@@ -17,9 +17,20 @@
                 <li>
                     <a href="teacherHome.jsp" class="active">Home</a>
                 </li>
-                <li>
-                    <a href="allCourses">All classes</a>
-                </li>
+
+                    <li>
+                     <a href="all">All classes</a>
+                  </li>
+                  <li>
+                     <a href="listStudents">All students</a>
+                   </li>
+
+                   <li>
+                    <a href="courses">All courses</a>
+                   </li>
+                   <li>
+                    <a href="logout">Log out</a>
+                   </li>
             </ul>
         </nav>
     </div>

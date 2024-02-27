@@ -1,11 +1,10 @@
-<%@ page import="java.util.List" %>
-<%@ page import="org.example.model.Course" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
 <html>
 <head>
-    <title>Kurslista</title>
-        <link rel="stylesheet" href="css/style.css">
+    <title>alla kurser</title>
+      <%@ page import="java.util.List" %>
+        <%@ page import="org.example.model.CourseBean" %>
+                <link rel="stylesheet" href="css/style.css">
 
 </head>
 <body>
@@ -28,6 +27,10 @@
                   <li>
                      <a href="listStudents">All students</a>
                    </li>
+
+                   <li>
+                    <a href="courses">All courses</a>
+                   </li>
                    <li>
                     <a href="logout">Log out</a>
                    </li>
@@ -35,25 +38,24 @@
         </nav>
     </div>
 </header>
-
-
-<h2>Kurslista</h2>
-
+<h2>Courses</h2>
 <table border="1">
     <tr>
-        <th>Kurs-ID</th>
-        <th>Namn</th>
+        <th>Name</th>
         <th>YHP</th>
-        <th>Beskrivning</th>
+        <th>Description</th>
+
     </tr>
-    <% List<Course> listCourse = (List<Course>) request.getAttribute("listCourse");
-    for (Course course : listCourse) { %>
-    <tr>
-        <td><%= course.getCourseId() %></td>
-        <td><%= course.getName() %></td>
-        <td><%= course.getYhp() %></td>
-        <td><%= course.getDescription() %></td>
-    </tr>
+    <%
+    List<CourseBean> allCoursesList = (List<CourseBean>) request.getAttribute("allCoursesList");
+    for (CourseBean course : allCoursesList) {
+    %>
+        <tr>
+            <td><%= course.getId() %></td>
+            <td><%= course.getName() %></td>
+            <td><%= course.getYHP() %></td>
+            <td><%= course.getDescription() %></td>
+        </tr>
     <% } %>
 </table>
 

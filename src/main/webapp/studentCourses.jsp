@@ -1,14 +1,41 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="java.util.List" %>
+<%@ page import="org.example.model.CourseBean" %>
+<%@ page import="org.example.model.CourseParticipant" %>
 <html>
 <head>
     <title>Studentens Kurser</title>
-      <%@ page import="java.util.List" %>
-        <%@ page import="org.example.model.CourseBean" %>
-<%@ page import="org.example.model.CourseparticipantsBeans" %>
-
+            <link rel="stylesheet" href="css/style.css">
 
 </head>
+
 <body>
+
+<header>
+    <div class="header">
+        <a href="index.html">
+            <h1 id="logo">Grit Academy</h1>
+        </a>
+         <nav>
+                 <ul id="menu">
+                     <li>
+                         <a href="studentHome.jsp" class="active">Home</a>
+                     </li>
+
+                     <li>
+                         <a href="studentCourse">Students in your classes</a>
+                     </li>
+      <li>
+                         <a href="allCourses">Your classes</a>
+                     </li>
+                      <li>
+                          <a href="logout">Log out</a>
+                      </li>
+                 </ul>
+             </nav>
+    </div>
+</header>
+
 <h2>My Courses</h2>
 <table border="1">
 <tr>
@@ -27,28 +54,7 @@
         </tr>
     <% } %>
     </table>
-<table border="1">
-<tr>
-    <th>Student Name</th>
-    <th>Username</th>
-    <th>Role</th>
-</tr>
-<%
-    List<CourseparticipantsBeans> sameStudents = (List<CourseparticipantsBeans>) request.getAttribute("sameStudents");
-    if (sameStudents != null) {
-        for (CourseparticipantsBeans student : sameStudents) {
-%>
-<tr>
-    <td><%= student.getId() %> </td>
-    <td><%= student.getUser_id() %></td>
-        <td><%= student.getUser_id() %></td>
-    <td><%= student.getRole() %></td>
-</tr>
-<%
-        }
-    }
-%>
-</table>
+
 
     </body>
 </html>

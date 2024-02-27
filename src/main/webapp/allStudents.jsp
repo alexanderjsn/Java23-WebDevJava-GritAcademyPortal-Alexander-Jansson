@@ -1,14 +1,15 @@
 <%@ page import="java.util.List" %>
-<%@ page import="org.example.model.Course" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="org.example.model.UserBean" %>
 
 <html>
 <head>
-    <title>Kurslista</title>
+    <title>Studenter</title>
         <link rel="stylesheet" href="css/style.css">
 
 </head>
 <body>
+
 
 <header>
     <div class="header">
@@ -28,6 +29,10 @@
                   <li>
                      <a href="listStudents">All students</a>
                    </li>
+
+                   <li>
+                    <a href="courses">All courses</a>
+                   </li>
                    <li>
                     <a href="logout">Log out</a>
                    </li>
@@ -37,23 +42,28 @@
 </header>
 
 
-<h2>Kurslista</h2>
-
+<h2>Students</h2>
 <table border="1">
     <tr>
-        <th>Kurs-ID</th>
-        <th>Namn</th>
-        <th>YHP</th>
-        <th>Beskrivning</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Town</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Role</th>
     </tr>
-    <% List<Course> listCourse = (List<Course>) request.getAttribute("listCourse");
-    for (Course course : listCourse) { %>
-    <tr>
-        <td><%= course.getCourseId() %></td>
-        <td><%= course.getName() %></td>
-        <td><%= course.getYhp() %></td>
-        <td><%= course.getDescription() %></td>
-    </tr>
+    <%
+    List<UserBean> allStudentCourses = (List<UserBean>) request.getAttribute("allStudents");
+    for (UserBean user : allStudentCourses) {
+    %>
+        <tr>
+            <td><%= user.getfName() %></td>
+            <td><%= user.getlName() %></td>
+            <td><%= user.getTown() %></td>
+            <td><%= user.getEmail() %></td>
+            <td><%= user.getPhone() %></td>
+            <td><%= user.getRole() %></td>
+        </tr>
     <% } %>
 </table>
 

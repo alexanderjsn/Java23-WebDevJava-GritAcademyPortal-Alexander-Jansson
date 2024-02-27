@@ -20,9 +20,16 @@
                 <li>
                     <a href="studentHome.jsp" class="active">Home</a>
                 </li>
+
                 <li>
-                    <a href="StudentCoursesServlet">Your classes</a>
+                    <a href="studentCourse">Students in your classes</a>
                 </li>
+ <li>
+                    <a href="allCourses">Your classes</a>
+                </li>
+                 <li>
+                     <a href="logout">Log out</a>
+                 </li>
             </ul>
         </nav>
     </div>
